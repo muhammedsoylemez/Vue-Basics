@@ -1,0 +1,7 @@
+{
+    "Beverages": [
+      { "id": 1, "title": "Coke", "quantity":3 },
+      { "id": 2, "title": "Fruit Juice", "quantity":5 },
+      { "id": 3, "title": "Water", "quantity":10 }
+    ]
+}
