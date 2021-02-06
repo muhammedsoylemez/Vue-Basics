@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practices | Properties</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+      .green{
+        background-color: chartreuse;
+      }
+      .red{
+        background-color:crimson;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+    <!-- Listeler -->
+      <ul>
+        <li v-for="i in 5">{{ i }}</li>
+      </ul>
+      <hr>
+      <ul>
+        <li v-for="thing in things">{{ thing }}</li>
+      </ul>
+      <hr>
+      <ul>
+        <li v-for="item in personel">{{ item }}</li>
+      </ul>
+      <hr>
+      <ul>
+        <input type="text" v-model="sellCount">
+        <li v-for="product in products" :class="changeBackgroundByCount(product)">
+         <span> Name : {{ product.name }} || {{ product.quantity }} adet </span>
+         <button :disabled="product.quantity == 0" @click="sellProduct(product)">Sell</button>
+        </li>
+      </ul>
+      <p v-if="sellWarning">Girdiğiniz miktar stok adedinden fazladır</p>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          sellCount :0,
+          sellWarning : false,
+          things : ["çatal","kaşık","bıçak"],
+          personel : {
+            name : "Muhammed",
+            department : "Tech",
+            salary : 7800
+          },
+          products :[
+              {
+                name : "iphone X",
+                quantity : 500,
+                price:10000
+              },
+              {
+                name : "samsung s10",
+                quantity : 500,
+                price:8500
+              },
+              {
+                name : "ipad 6",
+                quantity : 500,
+                price:10000
+              },
+              {
+                name : "macOS",
+                quantity : 400,
+                price:27000
+              }
+          ]
+        },
+        methods:{
+          sellProduct(product){
+            if (this.sellCount > product.quantity) {
+              this.sellWarning = true
+            }else{
+              this.sellWarning=false;
+            product.quantity -= this.sellCount;
+            }
+          },
+          changeBackgroundByCount(product){
+            return {'green' : product.quantity >0, 'red' :product.quantity <= 0}
+          }
+        }
+
+      });
+    </script>
+  </body>
+</html>
