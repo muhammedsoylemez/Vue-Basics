@@ -1,7 +1,6 @@
 "# Vue-Basics" 
 In this single page project I tried to use Vue.js with fake Api.
 But only used with get request Because main reason to build this project was to understand how Vue dynamics work.
-But there will be uprgades in time.
 
 I also used bootstrap to visualise elements better.
 
